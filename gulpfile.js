@@ -6,14 +6,9 @@ const filter = require('gulp-filter');
 const rename = require('gulp-rename');
 const path = require('path');
 const fs = require('fs');
-const { getProjectPath } = require('./scripts/projectHelper');
+const { getProjectPath, COMPILE_TARGET } = require('./scripts/projectHelper');
 const getBabelCommonConfig = require('./scripts/getBabelCommonConfig');
 const tsConfig = require('./scripts/getTSCommonConfig')();
-
-const COMPILE_TARGET = {
-    REACT_DOM: 'react-dom',
-    TARO: 'taro'
-};
 
 const dirs = ['react-dom', 'taro'].reduce((result, target) => (
     result[target] = {
@@ -28,7 +23,7 @@ const tsDefaultReporter = ts.reporter.defaultReporter();
 function babelify(js, options) {
     const { target, useESModules } = options;
 
-    const babelConfig = getBabelCommonConfig(useESModules);
+    const babelConfig = getBabelCommonConfig(options);
     delete babelConfig.cacheDirectory;
 
     const stream = js.pipe(babel(babelConfig));

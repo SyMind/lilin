@@ -1,6 +1,28 @@
+const { COMPILE_TARGET } = require('./projectHelper');
+
 const resolve = require.resolve;
 
-module.exports = function (useESModules) {
+module.exports = ({ target, useESModules }) => {
+    const plugins = [
+        [
+            resolve('@babel/plugin-transform-typescript'),
+            {
+                isTSX: true
+            }
+        ],
+        [
+            resolve('@babel/plugin-transform-runtime'),
+            {
+                useESModules,
+                version: '^7.10.4'
+            }
+        ]
+    ];
+
+    if (target === COMPILE_TARGET.TARO) {
+        plugins.push(resolve('./babelPluginTaro'));
+    }
+
     return {
         presets: [
             resolve('@babel/preset-react'),
@@ -14,20 +36,6 @@ module.exports = function (useESModules) {
                 }
             ]
         ],
-        plugins: [
-            [
-                resolve('@babel/plugin-transform-typescript'),
-                {
-                    isTSX: true
-                }
-            ],
-            [
-                resolve('@babel/plugin-transform-runtime'),
-                {
-                    useESModules,
-                    version: '^7.10.4'
-                }
-            ]
-        ]
+        plugins
     };
 };
