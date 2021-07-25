@@ -70,5 +70,4 @@ typings/
 .cache
 
 # build / generate output
-es
-lib
+dist
