@@ -8,14 +8,21 @@ module.exports = ({ types: t, template }) => {
     return {
         visitor: {
             Program: {
+                enter() {
+                    collection.clear();
+                },
                 exit(path) {
+                    if (collection.size === 0) {
+                        return;
+                    }
+
                     const components = Array.from(collection).join(', ');
                     const taroComponents = template(`import { ${components} } from "@tarojs/components";`, { sourceType: 'module' });
                     const lastImportDeclaration = path.get('body').filter(p => p.isImportDeclaration()).pop();
                     if (lastImportDeclaration) {
                         lastImportDeclaration.insertAfter(taroComponents());
                     } else {
-                        path.get('body').insertBefore(taroComponents());
+                        path.get('body').shift(taroComponents());
                     }
                 }
             },
