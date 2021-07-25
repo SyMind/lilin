@@ -1,38 +1,44 @@
 {
-  "name": "lilin",
-  "version": "1.0.0",
-  "description": "Taro3 同构组件库模板",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "unpkg": "dist/antd.min.js",
-  "typings": "lib/index.d.ts",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SyMind/lilin.git"
-  },
-  "keywords": [
-    "react",
-    "taro3"
-  ],
-  "author": "SyMind",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SyMind/lilin/issues"
-  },
-  "homepage": "https://github.com/SyMind/lilin#README.md",
-  "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/eslint-parser": "^7.14.7",
-    "@babel/eslint-plugin": "^7.14.5",
-    "@ecomfe/eslint-config": "^7.1.0",
-    "eslint": "^7.31.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "gulp": "^4.0.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  }
+    "name": "lilin",
+    "version": "1.0.0",
+    "description": "Taro3 同构组件库模板",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "unpkg": "dist/antd.min.js",
+    "typings": "lib/index.d.ts",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SyMind/lilin.git"
+    },
+    "keywords": [
+        "react",
+        "taro3"
+    ],
+    "author": "SyMind",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/SyMind/lilin/issues"
+    },
+    "homepage": "https://github.com/SyMind/lilin#README.md",
+    "devDependencies": {
+        "@babel/core": "^7.14.8",
+        "@babel/eslint-parser": "^7.14.7",
+        "@babel/eslint-plugin": "^7.14.5",
+        "@types/react": "^17.0.15",
+        "@typescript-eslint/parser": "^4.28.4",
+        "eslint": "^7.31.0",
+        "eslint-plugin-react": "^7.24.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "gulp": "^4.0.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "typescript": "^4.3.5"
+    },
+    "peerDependencies": {
+        "react": ">=16.9.0",
+        "react-dom": ">=16.9.0"
+    }
 }
