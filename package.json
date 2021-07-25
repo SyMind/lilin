@@ -7,6 +7,7 @@
     "unpkg": "dist/antd.min.js",
     "typings": "lib/index.d.ts",
     "scripts": {
+        "build": "gulp",
         "test": "jest"
     },
     "repository": {
@@ -27,12 +28,19 @@
         "@babel/core": "^7.14.8",
         "@babel/eslint-parser": "^7.14.7",
         "@babel/eslint-plugin": "^7.14.5",
+        "@babel/plugin-transform-runtime": "^7.14.5",
+        "@babel/plugin-transform-typescript": "^7.14.6",
+        "@babel/preset-env": "^7.14.8",
+        "@babel/preset-react": "^7.14.5",
         "@types/react": "^17.0.15",
         "@typescript-eslint/parser": "^4.28.4",
         "eslint": "^7.31.0",
         "eslint-plugin-react": "^7.24.0",
         "eslint-plugin-react-hooks": "^4.2.0",
         "gulp": "^4.0.2",
+        "gulp-babel": "^8.0.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "merge2": "^1.4.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "typescript": "^4.3.5"
