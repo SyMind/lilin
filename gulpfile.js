@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
+const through2 = require('through2');
 const merge2 = require('merge2');
 const filter = require('gulp-filter');
 const rename = require('gulp-rename');
@@ -9,6 +10,7 @@ const fs = require('fs');
 const { getProjectPath, COMPILE_TARGET } = require('./scripts/projectHelper');
 const getBabelCommonConfig = require('./scripts/getBabelCommonConfig');
 const tsConfig = require('./scripts/getTSCommonConfig')();
+const transformSass = require('./scripts/transformSass');
 
 const dirs = ['react-dom', 'taro'].reduce((result, target) => (
     result[target] = {
@@ -32,6 +34,32 @@ function babelify(js, options) {
 
 function compile(options) {
     const { target, useESModules } = options;
+
+    const sass = gulp
+        .src([
+            'components/**/*.sass',
+            'components/**/*.scss'
+        ])
+        .pipe(
+            through2.obj(function (file, encoding, next) {
+                this.push(file.clone());
+                if (file.path.match(/(\/|\\)style(\/|\\)index\.s(a|c)ss$/)) {
+                    transformSass(file.path)
+                        .then(css => {
+                            file.contents = Buffer.from(css);
+                            file.path = file.path.replace(/\.s(a|c)ss$/, '.css');
+                            this.push(file);
+                            next();
+                        })
+                        .catch(e => {
+                            console.error(e);
+                        });
+                } else {
+                    next();
+                }
+            })
+        )
+        .pipe(gulp.dest(useESModules ? dirs[target].esDir : dirs[target].libDir));
 
     let error = 0;
 
@@ -102,7 +130,7 @@ function compile(options) {
 
     const tsFilesStream = babelify(tsResult.js, options);
     const tsd = tsResult.dts.pipe(gulp.dest(useESModules ? dirs[target].esDir : dirs[target].libDir));
-    return merge2([tsFilesStream, tsd]);
+    return merge2([sass, tsFilesStream, tsd]);
 }
 
 function compileToReactDOMWithES(done) {
