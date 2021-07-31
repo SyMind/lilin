@@ -7,7 +7,8 @@
     "unpkg": "dist/antd.min.js",
     "typings": "lib/index.d.ts",
     "scripts": {
-        "build": "gulp",
+        "build:react-dom": "gulp compile:react-dom",
+        "build:taro": "gulp compile:taro",
         "test": "jest"
     },
     "repository": {

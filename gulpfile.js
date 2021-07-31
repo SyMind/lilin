@@ -20,7 +20,7 @@ const distDir = getProjectPath('dist');
 const tsDefaultReporter = ts.reporter.defaultReporter();
 
 function babelify(js, options) {
-    const { target, useESModules } = options;
+    const { useESModules } = options;
 
     const babelConfig = getBabelCommonConfig(options);
     delete babelConfig.cacheDirectory;
@@ -130,7 +130,7 @@ function compile(options) {
     return merge2([sass, tsFilesStream, tsd]);
 }
 
-function compileSass(target) {
+function compileSass() {
     return gulp
         .src([
             'components/**/*.sass',
@@ -198,11 +198,14 @@ function compileSassToTaro(done) {
     compileSass(COMPILE_TARGET.TARO).on('finish', done);
 }
 
-exports.default = gulp.parallel(
+gulp.task('compile:taro', gulp.parallel(
+    compileToTaroWithES,
+    compileToTaroWithLib,
+    compileSassToTaro
+));
+
+gulp.task('compile:react-dom', gulp.parallel(
     compileToReactDOMWithES,
     compileToReactDOMWithLib,
     compileSassToReactDOM
-    // compileToTaroWithES,
-    // compileToTaroWithLib,
-    // compileSassToTaro
-);
+));
