@@ -13,16 +13,9 @@ const getBabelCommonConfig = require('./build/getBabelCommonConfig');
 const tsConfig = require('./build/getTSCommonConfig')();
 const transformSass = require('./build/transformSass');
 
-const packagesDir = getProjectPath('packages');
-
-const dirs = ['react-dom', 'taro'].reduce((result, target) => (
-    result[target] = {
-        libDir: path.join(packagesDir, `${target}/lib`),
-        esDir: path.join(packagesDir, `${target}/es`),
-        distDir: path.join(packagesDir, `${target}/dist`)
-    },
-    result
-), {});
+const libDir = getProjectPath('lib');
+const esDir = getProjectPath('es');
+const distDir = getProjectPath('dist');
 
 const tsDefaultReporter = ts.reporter.defaultReporter();
 
@@ -33,7 +26,7 @@ function babelify(js, options) {
     delete babelConfig.cacheDirectory;
 
     const stream = js.pipe(babel(babelConfig));
-    return stream.pipe(gulp.dest(useESModules ? dirs[target].esDir : dirs[target].libDir));
+    return stream.pipe(gulp.dest(useESModules ? esDir : libDir));
 }
 
 function compile(options) {
@@ -63,7 +56,7 @@ function compile(options) {
                 }
             })
         )
-        .pipe(gulp.dest(useESModules ? dirs[target].esDir : dirs[target].libDir));
+        .pipe(gulp.dest(useESModules ? esDir : libDir));
 
     let error = 0;
 
@@ -133,7 +126,7 @@ function compile(options) {
     tsResult.on('end', check);
 
     const tsFilesStream = babelify(tsResult.js, options);
-    const tsd = tsResult.dts.pipe(gulp.dest(useESModules ? dirs[target].esDir : dirs[target].libDir));
+    const tsd = tsResult.dts.pipe(gulp.dest(useESModules ? esDir : libDir));
     return merge2([sass, tsFilesStream, tsd]);
 }
 
@@ -161,8 +154,8 @@ function compileSass(target) {
                 }
             })
         )
-        .pipe(concat('lilin-ui.css'))
-        .pipe(gulp.dest(dirs[target].distDir));
+        .pipe(concat('lilin.css'))
+        .pipe(gulp.dest(distDir));
 }
 
 function compileToReactDOMWithES(done) {
@@ -208,8 +201,8 @@ function compileSassToTaro(done) {
 exports.default = gulp.parallel(
     compileToReactDOMWithES,
     compileToReactDOMWithLib,
-    compileSassToReactDOM,
-    compileToTaroWithES,
-    compileToTaroWithLib,
-    compileSassToTaro
+    compileSassToReactDOM
+    // compileToTaroWithES,
+    // compileToTaroWithLib,
+    // compileSassToTaro
 );

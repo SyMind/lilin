@@ -20,6 +20,11 @@
     ],
     "author": "SyMind",
     "license": "MIT",
+    "files": [
+        "dist",
+        "lib",
+        "es"
+    ],
     "bugs": {
         "url": "https://github.com/SyMind/lilin/issues"
     },
