@@ -5,17 +5,21 @@ const through2 = require('through2');
 const merge2 = require('merge2');
 const filter = require('gulp-filter');
 const rename = require('gulp-rename');
+const concat = require('gulp-concat');
 const path = require('path');
 const fs = require('fs');
-const { getProjectPath, COMPILE_TARGET } = require('./scripts/projectHelper');
-const getBabelCommonConfig = require('./scripts/getBabelCommonConfig');
-const tsConfig = require('./scripts/getTSCommonConfig')();
-const transformSass = require('./scripts/transformSass');
+const { getProjectPath, COMPILE_TARGET } = require('./build/projectHelper');
+const getBabelCommonConfig = require('./build/getBabelCommonConfig');
+const tsConfig = require('./build/getTSCommonConfig')();
+const transformSass = require('./build/transformSass');
+
+const packagesDir = getProjectPath('packages');
 
 const dirs = ['react-dom', 'taro'].reduce((result, target) => (
     result[target] = {
-        libDir: getProjectPath(`dist/${target}/lib`),
-        esDir: getProjectPath(`dist/${target}/es`)
+        libDir: path.join(packagesDir, `${target}/lib`),
+        esDir: path.join(packagesDir, `${target}/es`),
+        distDir: path.join(packagesDir, `${target}/dist`)
     },
     result
 ), {});
@@ -133,6 +137,34 @@ function compile(options) {
     return merge2([sass, tsFilesStream, tsd]);
 }
 
+function compileSass(target) {
+    return gulp
+        .src([
+            'components/**/*.sass',
+            'components/**/*.scss'
+        ])
+        .pipe(
+            through2.obj(function (file, encoding, next) {
+                if (file.path.match(/(\/|\\)style(\/|\\)index\.s(a|c)ss$/)) {
+                    transformSass(file.path)
+                        .then(css => {
+                            file.contents = Buffer.from(css);
+                            file.path = file.path.replace(/\.s(a|c)ss$/, '.css');
+                            this.push(file);
+                            next();
+                        })
+                        .catch(e => {
+                            console.error(e);
+                        });
+                } else {
+                    next();
+                }
+            })
+        )
+        .pipe(concat('lilin-ui.css'))
+        .pipe(gulp.dest(dirs[target].distDir));
+}
+
 function compileToReactDOMWithES(done) {
     const options = {
         target: COMPILE_TARGET.REACT_DOM,
@@ -165,9 +197,19 @@ function compileToTaroWithLib(done) {
     compile(options).on('finish', done);
 }
 
-exports.default = gulp.series(
+function compileSassToReactDOM(done) {
+    compileSass(COMPILE_TARGET.REACT_DOM).on('finish', done);
+}
+
+function compileSassToTaro(done) {
+    compileSass(COMPILE_TARGET.TARO).on('finish', done);
+}
+
+exports.default = gulp.parallel(
     compileToReactDOMWithES,
     compileToReactDOMWithLib,
+    compileSassToReactDOM,
     compileToTaroWithES,
-    compileToTaroWithLib
+    compileToTaroWithLib,
+    compileSassToTaro
 );

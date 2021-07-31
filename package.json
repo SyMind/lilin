@@ -34,6 +34,7 @@
         "@babel/preset-react": "^7.14.5",
         "@tarojs/components": "^3.3.1",
         "@types/react": "^17.0.15",
+        "@typescript-eslint/eslint-plugin": "^4.28.5",
         "@typescript-eslint/parser": "^4.28.4",
         "autoprefixer": "^10.3.1",
         "eslint": "^7.31.0",
@@ -41,6 +42,7 @@
         "eslint-plugin-react-hooks": "^4.2.0",
         "gulp": "^4.0.2",
         "gulp-babel": "^8.0.0",
+        "gulp-concat": "^2.6.1",
         "gulp-filter": "^7.0.0",
         "gulp-rename": "^2.0.0",
         "gulp-typescript": "^6.0.0-alpha.1",
@@ -55,5 +57,8 @@
     "peerDependencies": {
         "react": ">=16.9.0",
         "react-dom": ">=16.9.0"
+    },
+    "dependencies": {
+        "classnames": "^2.3.1"
     }
 }

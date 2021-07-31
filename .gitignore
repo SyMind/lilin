@@ -70,4 +70,4 @@ typings/
 .cache
 
 # build / generate output
-dist
+packages
