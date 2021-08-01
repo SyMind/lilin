@@ -19,6 +19,11 @@ $btn-prefix-cls: #{$lilin-prefix}-btn;
     user-select: none;
     touch-action: manipulation;
 
+    // 为了兼容百度小程序
+    &::after {
+        border: 0;
+    }
+
     &::before {
         position: absolute;
         top: 50%;
