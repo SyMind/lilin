@@ -5,19 +5,56 @@ const through2 = require('through2');
 const merge2 = require('merge2');
 const filter = require('gulp-filter');
 const rename = require('gulp-rename');
-const concat = require('gulp-concat');
+const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 const { getProjectPath, COMPILE_TARGET } = require('./build/projectHelper');
 const getBabelCommonConfig = require('./build/getBabelCommonConfig');
+const getWebpackConfig = require('./build/getWebpackConfig');
 const tsConfig = require('./build/getTSCommonConfig')();
 const transformSass = require('./build/transformSass');
 
 const libDir = getProjectPath('lib');
 const esDir = getProjectPath('es');
-const distDir = getProjectPath('dist');
 
 const tsDefaultReporter = ts.reporter.defaultReporter();
+
+function dist(options, done) {
+    const webpackConfig = getWebpackConfig(options);
+
+    webpack(webpackConfig, (err, stats) => {
+        if (err) {
+            console.error(err.stack || err);
+            if (err.details) {
+                console.error(err.details);
+            }
+            return;
+        }
+
+        const info = stats.toJson();
+
+        if (stats.hasErrors()) {
+            console.error(info.errors);
+        }
+
+        if (stats.hasWarnings()) {
+            console.warn(info.warnings);
+        }
+
+        const buildInfo = stats.toString({
+            colors: true,
+            children: true,
+            chunks: false,
+            modules: false,
+            chunkModules: false,
+            hash: false,
+            version: false,
+        });
+        console.log(buildInfo);
+
+        done(0);
+    });
+}
 
 function babelify(js, options) {
     const { useESModules } = options;
@@ -130,34 +167,6 @@ function compile(options) {
     return merge2([sass, tsFilesStream, tsd]);
 }
 
-function compileSass() {
-    return gulp
-        .src([
-            'components/**/*.sass',
-            'components/**/*.scss'
-        ])
-        .pipe(
-            through2.obj(function (file, encoding, next) {
-                if (file.path.match(/(\/|\\)style(\/|\\)index\.s(a|c)ss$/)) {
-                    transformSass(file.path)
-                        .then(css => {
-                            file.contents = Buffer.from(css);
-                            file.path = file.path.replace(/\.s(a|c)ss$/, '.css');
-                            this.push(file);
-                            next();
-                        })
-                        .catch(e => {
-                            console.error(e);
-                        });
-                } else {
-                    next();
-                }
-            })
-        )
-        .pipe(concat('lilin.css'))
-        .pipe(gulp.dest(distDir));
-}
-
 function compileToReactDOMWithES(done) {
     const options = {
         target: COMPILE_TARGET.REACT_DOM,
@@ -172,6 +181,14 @@ function compileToReactDOMWithLib(done) {
         useESModules: false
     };
     compile(options).on('finish', done);
+}
+
+function compileToReactDOMWithDist(done) {
+    const options = {
+        target: COMPILE_TARGET.REACT_DOM,
+        useESModules: false
+    };
+    dist(options, done);
 }
 
 function compileToTaroWithES(done) {
@@ -190,22 +207,22 @@ function compileToTaroWithLib(done) {
     compile(options).on('finish', done);
 }
 
-function compileSassToReactDOM(done) {
-    compileSass(COMPILE_TARGET.REACT_DOM).on('finish', done);
-}
-
-function compileSassToTaro(done) {
-    compileSass(COMPILE_TARGET.TARO).on('finish', done);
+function compileToTaroWithDist(done) {
+    const options = {
+        target: COMPILE_TARGET.TARO,
+        useESModules: false
+    };
+    dist(options, done);
 }
 
 gulp.task('compile:taro', gulp.parallel(
     compileToTaroWithES,
     compileToTaroWithLib,
-    compileSassToTaro
+    compileToTaroWithDist
 ));
 
 gulp.task('compile:react-dom', gulp.parallel(
     compileToReactDOMWithES,
     compileToReactDOMWithLib,
-    compileSassToReactDOM
+    compileToReactDOMWithDist
 ));

@@ -55,13 +55,16 @@ module.exports = ({ types: t, template }) => {
                     if (INLINE_ELEMENTS.includes(typeArgument.value)) {
                         args[0] = t.identifier('BridgeInline');
                         collection.add('BridgeInline');
-                    } if (typeArgument.value === 'button') {
+                        return;
+                    }
+                    if (typeArgument.value === 'button') {
                         args[0] = t.identifier('BridgeButton');
                         collection.add('BridgeButton');
-                    } else {
-                        args[0] = t.identifier('BridgeBlock');
-                        collection.add('BridgeBlock');
+                        return;
                     }
+
+                    args[0] = t.identifier('BridgeBlock');
+                    collection.add('BridgeBlock');
                 }
             }
         }

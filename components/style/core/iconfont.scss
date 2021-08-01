@@ -2,9 +2,9 @@
 
 @font-face {
     font-family: "nutui-iconfont";
-    src: url('../font/iconfont.woff2?t=1620383008438') format('woff2'),
-         url('../font/iconfont.woff?t=1620383008438') format('woff'),
-         url('../font/iconfont.ttf?t=1620383008438') format('truetype');
+    src: url('./fonts/iconfont.woff2') format('woff2'),
+         url('./fonts/iconfont.woff') format('woff'),
+         url('./fonts/iconfont.ttf') format('truetype');
 }
 
 .#{$iconfont-css-prefix} {

@@ -1,4 +1,4 @@
-import { createElement as h, useContext, FC } from 'react';
+import { useContext, FC } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 
@@ -9,7 +9,6 @@ interface IconProps {
     size?: string | number;
     fontClassName?: string;
     color?: string;
-    tag?: string;
     onClick?: () => void;
 }
 
@@ -18,37 +17,28 @@ const Icon: FC<IconProps> = ({
     className,
     name,
     size,
-    children,
     color,
-    tag = 'i',
     onClick
 }) => {
     const {getPrefixCls} = useContext(ConfigContext);
     const prefixCls = getPrefixCls('icon', customizePrefixCls);
 
-    const isImage = name ? name.indexOf('/') !== -1 : false;
-
-    return h(
-        isImage ? 'img' : tag,
-        {
-            className: isImage
-                ? `${prefixCls}__img`
-                : classNames(
-                    'lilin-iconfont',
-                    prefixCls,
-                    `${prefixCls}-${name}`,
-                    className
-                ),
-            style: {
+    return (
+        <i
+            className={classNames(
+                'lilinicon',
+                `lilinicon-${name}`,
+                prefixCls,
+                className
+            )}
+            style={{
                 color,
                 fontSize: size,
                 width: size,
                 height: size
-            },
-            onClick,
-            src: isImage ? name : undefined
-        },
-        children
+            }}
+            onClick={onClick}
+        />
     );
 };
 
