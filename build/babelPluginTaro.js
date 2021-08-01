@@ -57,6 +57,7 @@ module.exports = ({ types: t, template }) => {
                         collection.add('BridgeInline');
                         return;
                     }
+
                     if (typeArgument.value === 'button') {
                         args[0] = t.identifier('BridgeButton');
                         collection.add('BridgeButton');

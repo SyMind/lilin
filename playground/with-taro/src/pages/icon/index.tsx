@@ -12,6 +12,13 @@ export default class IconPage extends Component {
                     <Icon name="dongdong" />
                     <Icon name="JD" />
                 </View>
+
+                <View>图标颜色</View>
+                <View className={styles.row}>
+                    <Icon name="dongdong" color="#fa2c19" />
+                    <Icon name="dongdong" color="#64b578" />
+                    <Icon name="JD" color="#fa2c19" />
+                </View>
             </View>
         );
     }

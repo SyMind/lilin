@@ -1,6 +1,7 @@
 export default {
     pages: [
         'pages/index/index',
+        'pages/button/index',
         'pages/icon/index'
     ],
     window: {

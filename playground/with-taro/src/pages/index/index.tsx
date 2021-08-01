@@ -1,51 +1,40 @@
 import { Component } from 'react';
-import { View } from '@tarojs/components';
-import { Button } from 'lilin';
+import Taro from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
+import { Icon } from 'lilin';
+import { nav } from '../../../../config.json';
 import styles from './index.module.scss';
 
 export default class Index extends Component {
-
-    componentWillMount() { }
-
-    componentDidMount() { }
-
-    componentWillUnmount() { }
-
-    componentDidShow() { }
-
-    componentDidHide() { }
+    handleClick = component => {
+        Taro.navigateTo({
+            url: `/pages/${component.name.toLowerCase()}/index`
+        });
+    }
 
     render() {
         return (
-            <View className='index'>
-                <View>按钮类型</View>
-                <View className={styles.row}>
-                    <Button type="primary">主要按钮</Button>
-                    <Button type="info">信息按钮</Button>
-                    <Button type="default">默认按钮</Button>
-                    <Button type="danger">危险按钮</Button>
-                    <Button type="warning">警告按钮</Button>
-                    <Button type="success">成功按钮</Button>
-                </View>
-
-                <View>朴素按钮</View>
-                <View>
-                    <Button plain type="primary">朴素按钮</Button>
-                    <Button plain type="info">朴素按钮</Button>
-                </View>
-
-                <View>禁用状态</View>
-                <View>
-                    <Button disabled type="primary">禁用状态</Button>
-                    <Button plain disabled type="info">禁用状态</Button>
-                    <Button plain disabled type="primary">禁用状态</Button>
-                </View>
-
-                <View>按钮形状</View>
-                <View>
-                    <Button shape="square" type="primary">方形按钮</Button>
-                    <Button type="info">圆形按钮</Button>
-                </View>
+            <View className='container'>
+                {nav.map(nav => (
+                    <View key={nav.name}>
+                        <View>{nav.name}</View>
+                        <View className={styles.components}>
+                            {nav.packages.map(component => (
+                                <View
+                                    key={component.name}
+                                    className={styles.item}
+                                    onClick={() => this.handleClick(component)}
+                                >
+                                    <View className={styles.name}>
+                                        <Text>{component.name}</Text>
+                                        <Text>{component.cName}</Text>
+                                    </View>
+                                    <Icon size="14px" color="#979797" name="right" />
+                                </View>
+                            ))}
+                        </View>
+                    </View>
+                ))}
             </View>
         );
     }
