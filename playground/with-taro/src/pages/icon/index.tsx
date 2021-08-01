@@ -1,0 +1,18 @@
+import { Component } from 'react';
+import { View } from '@tarojs/components';
+import { Icon } from 'lilin';
+import styles from './index.module.scss';
+
+export default class IconPage extends Component {
+    render() {
+        return (
+            <View className='index'>
+                <View>基础用法</View>
+                <View className={styles.row}>
+                    <Icon name="dongdong" />
+                    <Icon name="JD" />
+                </View>
+            </View>
+        );
+    }
+}

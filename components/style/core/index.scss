@@ -1,14 +1,2 @@
-// Body
-//
-// 1. 移除所有浏览器中的 `margin`
-// 2. 作为最佳实践，允许为 `body-background` 设置默认值
-body {
-    margin: 0;
-    color: $text-color;
-    font-size: $font-size-base;
-    font-family: $font-family;
-    font-variant: $font-variant-base;
-    line-height: $line-height-base;
-    background-color: $body-background;
-    font-feature-settings: $font-feature-settings-base;
-}
+@import "base";
+@import "iconfont";
