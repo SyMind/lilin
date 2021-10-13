@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import Taro from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
-import { Icon } from 'lilin';
-import { nav } from '../../../../config.json';
-import styles from './index.module.scss';
+import { View, Image, Text } from '@tarojs/components';
+import { Icon } from '../../../../../es';
+import { nav } from '../../../config.json';
+import './index.scss';
 
 export default class Index extends Component {
     handleClick = component => {
@@ -14,27 +14,41 @@ export default class Index extends Component {
 
     render() {
         return (
-            <View className='container'>
-                {nav.map(nav => (
-                    <View key={nav.name}>
-                        <View>{nav.name}</View>
-                        <View className={styles.components}>
-                            {nav.packages.map(component => (
-                                <View
-                                    key={component.name}
-                                    className={styles.item}
-                                    onClick={() => this.handleClick(component)}
-                                >
-                                    <View className={styles.name}>
-                                        <Text>{component.name}</Text>
-                                        <Text>{component.cName}</Text>
-                                    </View>
-                                    <Icon size="14px" color="#979797" name="right" />
-                                </View>
-                            ))}
-                        </View>
+            <View className='index'>
+                <View className='index-header'>
+                    <Image
+                        className='img'
+                        src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                    />
+                    <View className='info'>
+                        <View className='h1'>LiLin</View>
+                        <View className='p'>京东风格的轻量级小程序组件库 NutUI 的 React 实现</View>
                     </View>
-                ))}
+                </View>
+
+                <View className='index-components'>
+                    {nav.map(nav => (
+                        <View key={nav.name} className='ol'>
+                            <View className='li'>{nav.name}</View>
+                            <View className='ul'>
+                                {nav.packages.map(component => (
+                                    <View
+                                        key={component.name}
+                                        className='li'
+                                    >
+                                        <Text
+                                            className='a'
+                                            onClick={() => this.handleClick(component)}
+                                        >
+                                            {component.name}&nbsp;&nbsp;{component.cName}
+                                        </Text>
+                                        <Icon size="14px" color="#979797" name="right" />
+                                    </View>
+                                ))}
+                            </View>
+                        </View>
+                    ))}
+                </View>
             </View>
         );
     }

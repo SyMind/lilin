@@ -13,3 +13,5 @@ const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string): s
 export const ConfigContext = createContext<ConfigConsumerProps>({
     getPrefixCls: defaultGetPrefixCls
 });
+
+export default ConfigContext.Provider;

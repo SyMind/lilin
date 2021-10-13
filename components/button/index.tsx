@@ -1,6 +1,7 @@
 import { useMemo, useContext, FC, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
+import Icon from '../icon';
 
 export type ButtonShape = 'square' | 'round';
 
@@ -17,6 +18,7 @@ export type ButtonSize = 'large' | 'normal' | 'small';
 interface ButtonProps {
     prefixCls?: string;
     className?: string;
+    style?: CSSProperties;
     color?: string;
     shape?: ButtonShape;
     plain?: boolean;
@@ -25,12 +27,14 @@ interface ButtonProps {
     type?: ButtonType;
     size?: ButtonSize;
     block?: boolean;
+    icon?: string;
     onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
     prefixCls: customizePrefixCls,
     className,
+    style: customStyle,
     color,
     shape = 'round',
     plain = false,
@@ -39,6 +43,7 @@ const Button: FC<ButtonProps> = ({
     type = 'default',
     size = 'normal',
     block = false,
+    icon: customIcon,
     children,
     onClick
 }) => {
@@ -62,8 +67,15 @@ const Button: FC<ButtonProps> = ({
             style.background = color;
         }
 
+        if (customStyle) {
+            return {
+                ...style,
+                ...customStyle
+            };
+        }
+
         return style;
-    }, [color, plain]);
+    }, [color, customStyle, plain]);
 
     const classes = classNames(
         prefixCls,
@@ -79,12 +91,23 @@ const Button: FC<ButtonProps> = ({
         className
     );
 
+    const icon = useMemo(() => {
+        if (loading) {
+            return <Icon className={`${prefixCls}--loading-icon`} name='loading' />;
+        }
+        if (customIcon) {
+            return <Icon className='icon' name={customIcon} />;
+        }
+        return null;
+    }, [customIcon, loading, prefixCls]);
+
     return (
         <button
             className={classes}
             style={style}
             onClick={onClick}
         >
+            {icon}
             {children}
         </button>
     );
