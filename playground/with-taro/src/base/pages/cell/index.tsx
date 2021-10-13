@@ -3,7 +3,7 @@ import { View } from '@tarojs/components';
 import { Cell } from '../../../../../../es';
 import './index.scss';
 
-const ButtonPage = () => {
+const CellPage = () => {
     const testClick = useCallback(() => {
         console.log('点击事件');
     }, []);
@@ -14,13 +14,13 @@ const ButtonPage = () => {
             <Cell title="我是标题" desc="描述文字" />
             <Cell
                 title="我是标题"
-                sub-title="副标题描述"
+                subTitle="副标题描述"
                 desc="描述文字"
             />
             <Cell title="点击测试" onClick={testClick} />
-            <Cell title="圆角设置 0" round-radius="0" />
+            <Cell title="圆角设置 0" roundRadius={0} />
 
-            <Cell className='h2'>直接使用插槽(slot)</Cell>
+            <View className='h2'>直接使用插槽(slot)</View>
 
             <Cell title="我是标题" desc="描述文字">
                 <View>自定义内容</View>
@@ -43,4 +43,4 @@ const ButtonPage = () => {
     );
 };
 
-export default ButtonPage;
+export default CellPage;

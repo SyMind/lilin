@@ -60,14 +60,14 @@ $cell-group-prefix-cls: #{cell-prefix-cls}-group;
         display: flex;
         flex-direction: column;
         flex: 1;
-        &.icon {
-            flex-direction: row;
-            .icon {
-                margin-right: 10px;
-            }
-        }
-        &-desc {
+        &--desc {
             font-size: $cell-title-desc-font;
+        }
+    }
+    &--icon {
+        flex-direction: row;
+        .#{$iconfont-css-prefix} {
+            margin-right: 10px;
         }
     }
     &--desc {
