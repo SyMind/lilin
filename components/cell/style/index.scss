@@ -1,0 +1,113 @@
+@import '../../style/themes.scss';
+
+$cell-prefix-cls: #{$lilin-prefix}-cell;
+
+$cell-group-prefix-cls: #{cell-prefix-cls}-group;
+
+.#{$cell-prefix-cls} {
+    position: relative;
+    display: flex;
+    width: 100%;
+    line-height: 20px;
+    padding: 13px 16px;
+    background: $white;
+    border-radius: $cell-border-radius;
+    box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+    font-size: $cell-title-font;
+    color: $cell-color;
+    margin: 10px 0;
+    box-sizing: border-box;
+
+    &:last-child {
+        &::after {
+          border: 0;
+        }
+    }
+
+    &::after {
+        position: absolute;
+        box-sizing: border-box;
+        content: ' ';
+        pointer-events: none;
+        right: 16px;
+        bottom: 0;
+        left: 16px;
+        transform: scaleY(0.5);
+    }
+
+    &:active::before {
+        opacity: 0.1;
+    }
+    &--clickable {
+        cursor: pointer;
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: $black;
+            border: inherit;
+            border-color: $black;
+            border-radius: inherit;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            content: ' ';
+        }
+    }
+
+    &--title {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        &.icon {
+            flex-direction: row;
+            .icon {
+                margin-right: 10px;
+            }
+        }
+        &-desc {
+            font-size: $cell-title-desc-font;
+        }
+    }
+    &--desc {
+        display: inline-block;
+        text-align: right;
+        font-size: $cell-desc-font;
+        color: $cell-desc-color;
+    }
+    &--link {
+        color: #979797;
+    }
+}
+
+.#{$cell-group-prefix-cls} {
+    display: block;
+    &--title {
+        display: inherit;
+        padding: $cell-group-title-padding;
+        color: $cell-group-title-color;
+        font-size: $cell-group-title-font-size;
+        line-height: $cell-group-title-line-height;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    &--warp {
+        display: inherit;
+        border-radius: $cell-border-radius;
+        overflow: hidden;
+        background-color: $cell-group-background-color;
+        margin: 10px 0;
+        .#{$cell-prefix-cls} {
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+    }
+    .#{$cell-prefix-cls} {
+        &::after {
+            border-bottom: 2px solid #f5f6f7;
+        }
+    }
+}

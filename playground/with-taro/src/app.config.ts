@@ -4,7 +4,7 @@ export default {
         {
             root: 'base',
             pages: [
-                // 'pages/cell/index',
+                'pages/cell/index',
                 'pages/icon/index',
                 // 'pages/price/index',
                 'pages/button/index'
