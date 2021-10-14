@@ -23,7 +23,7 @@ interface CellProps {
 
 interface CompoundedComponent extends FC<CellProps> {
     Group: typeof Group;
-  }
+}
 
 const Cell: CompoundedComponent = ({
     prefixCls: customizePrefixCls,

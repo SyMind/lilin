@@ -64,6 +64,12 @@ module.exports = ({ types: t, template }) => {
                         return;
                     }
 
+                    if (typeArgument.value === 'img') {
+                        args[0] = t.identifier('BridgeImg');
+                        collection.add('BridgeImg');
+                        return;
+                    }
+
                     args[0] = t.identifier('BridgeBlock');
                     collection.add('BridgeBlock');
                 }

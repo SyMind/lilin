@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components';
-import { Icon } from 'lilin';
+import { Icon } from '../../../../../../es';
 
 const IconPage = () => (
     <View className='index'>

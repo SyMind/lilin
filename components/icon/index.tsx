@@ -1,6 +1,7 @@
 import { useContext, FC } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
+import { isURI } from '../_util/strings';
 
 interface IconProps {
     prefixCls?: string;
@@ -20,8 +21,29 @@ const Icon: FC<IconProps> = ({
     color,
     onClick
 }) => {
-    const {getPrefixCls} = useContext(ConfigContext);
+    const { getPrefixCls } = useContext(ConfigContext);
     const prefixCls = getPrefixCls('icon', customizePrefixCls);
+
+    if (isURI(name)) {
+        return (
+            <img
+                className={classNames(
+                    'lilinicon',
+                    'lilinicon--img',
+                    prefixCls,
+                    className
+                )}
+                style={{
+                    color,
+                    fontSize: size,
+                    width: size,
+                    height: size
+                }}
+                src={name}
+                onClick={onClick}
+            />
+        );
+    }
 
     return (
         <i

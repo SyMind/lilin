@@ -7,8 +7,8 @@ export default {
                 'pages/cell/index',
                 'pages/icon/index',
                 // 'pages/price/index',
-                'pages/button/index'
-                // 'pages/avatar/index',
+                'pages/button/index',
+                'pages/avatar/index'
                 // 'pages/popup/index',
                 // 'pages/overlay/index'
             ]
