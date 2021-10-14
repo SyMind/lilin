@@ -49,7 +49,7 @@ const Avatar: FC<AvatarProps> = ({
         >
             {!!icon && <Icon name={icon} />}
             {!!children && (
-                <div className={`${prefixCls}---text`}>
+                <div className={`${prefixCls}--text`}>
                     {children}
                 </div>
             )}

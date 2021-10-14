@@ -6,7 +6,7 @@ export default {
             pages: [
                 'pages/cell/index',
                 'pages/icon/index',
-                // 'pages/price/index',
+                'pages/price/index',
                 'pages/button/index',
                 'pages/avatar/index'
                 // 'pages/popup/index',
