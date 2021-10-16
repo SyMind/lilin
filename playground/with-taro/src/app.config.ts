@@ -12,6 +12,10 @@ export default {
                 // 'pages/popup/index',
                 'pages/overlay/index'
             ]
+        },
+        {
+            root: 'layout',
+            pages: ['pages/layout/index']
         }
     ],
     window: {

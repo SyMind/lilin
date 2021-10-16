@@ -1,0 +1,30 @@
+@use 'sass:math';
+
+@import '../../style/themes.scss';
+
+$col-prefix-cls: #{$lilin-prefix}-col;
+
+.#{$col-prefix-cls} {
+    box-sizing: border-box;
+    word-break: break-all;
+
+    &-gutter {
+        &:last-child {
+            padding-right: 0 !important;
+        }
+        &:first-child {
+            padding-left: 0 !important;
+        }
+    }
+}
+
+@for $i from 1 through 24 {
+    .#{$col-prefix-cls} {
+        &-offset-#{$i} {
+            margin-left: math.div(100, 24) * $i * 1%;
+        }
+        &-#{$i} {
+            width: math.div(100, 24) * $i * 1%;
+        }
+    }
+}

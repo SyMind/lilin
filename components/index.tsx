@@ -10,4 +10,7 @@ export { default as Price } from './price';
 
 export { default as Overlay } from './overlay';
 
+export { default as Row } from './row';
+export { default as Col } from './col';
+
 export { default as ConfigProvider } from './config-provider';
