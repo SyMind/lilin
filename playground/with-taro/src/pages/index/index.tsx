@@ -6,9 +6,9 @@ import { nav } from '../../../config.json';
 import './index.scss';
 
 export default class Index extends Component {
-    handleClick = component => {
+    handleClick = (nav, component) => {
         Taro.navigateTo({
-            url: `/pages/${component.name.toLowerCase()}/index`
+            url: `/${nav.enName}/pages/${component.name}/index`
         });
     }
 
@@ -38,7 +38,7 @@ export default class Index extends Component {
                                     >
                                         <Text
                                             className='a'
-                                            onClick={() => this.handleClick(component)}
+                                            onClick={() => this.handleClick(nav, component)}
                                         >
                                             {component.name}&nbsp;&nbsp;{component.cName}
                                         </Text>
