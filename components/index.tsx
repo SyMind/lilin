@@ -8,4 +8,6 @@ export { default as Avatar } from './avatar';
 
 export { default as Price } from './price';
 
+export { default as Overlay } from './overlay';
+
 export { default as ConfigProvider } from './config-provider';

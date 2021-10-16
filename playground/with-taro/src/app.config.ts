@@ -8,9 +8,9 @@ export default {
                 'pages/icon/index',
                 'pages/price/index',
                 'pages/button/index',
-                'pages/avatar/index'
+                'pages/avatar/index',
                 // 'pages/popup/index',
-                // 'pages/overlay/index'
+                'pages/overlay/index'
             ]
         }
     ],
