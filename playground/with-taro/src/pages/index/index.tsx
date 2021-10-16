@@ -31,20 +31,26 @@ export default class Index extends Component {
                         <View key={nav.name} className='ol'>
                             <View className='li'>{nav.name}</View>
                             <View className='ul'>
-                                {nav.packages.map(component => (
-                                    <View
-                                        key={component.name}
-                                        className='li'
-                                    >
-                                        <Text
-                                            className='a'
-                                            onClick={() => this.handleClick(nav, component)}
+                                {nav.packages.map(component => {
+                                    if (!component.show) {
+                                        return null;
+                                    }
+
+                                    return (
+                                        <View
+                                            key={component.name}
+                                            className='li'
                                         >
-                                            {component.name}&nbsp;&nbsp;{component.cName}
-                                        </Text>
-                                        <Icon size="14px" color="#979797" name="right" />
-                                    </View>
-                                ))}
+                                            <Text
+                                                className='a'
+                                                onClick={() => this.handleClick(nav, component)}
+                                            >
+                                                {component.name}&nbsp;&nbsp;{component.cName}
+                                            </Text>
+                                            <Icon size="14px" color="#979797" name="right" />
+                                        </View>
+                                    );
+                                })}
                             </View>
                         </View>
                     ))}
