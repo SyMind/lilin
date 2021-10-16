@@ -22,7 +22,7 @@ export default class Index extends Component {
                     />
                     <View className='info'>
                         <View className='h1'>LiLin</View>
-                        <View className='p'>京东风格的轻量级小程序组件库 NutUI 的 React 实现</View>
+                        <View className='p'>LiLin 是 NutUI 组件库的 React 实现</View>
                     </View>
                 </View>
 

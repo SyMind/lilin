@@ -1,3 +1,3 @@
 # lilin
 
-React DOM & Taro3 同构组件库模板
+京东风格的轻量级移动端组件库 NutUI 的 React 实现。
