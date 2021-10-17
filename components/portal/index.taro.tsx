@@ -1,3 +1,10 @@
-import { Fragment } from 'react';
+import { FC } from 'react';
+import { PortalProps } from './typings';
 
-export default Fragment;
+export { PortalProps } from './typings';
+
+const Portal: FC<PortalProps> = ({children}) => {
+    return <>{children}</>;
+};
+
+export default Portal;

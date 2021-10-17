@@ -6,7 +6,6 @@ export interface OverlayProps {
     style?: CSSProperties;
     visible?: boolean;
     zIndex?: number;
-    duration?: number; // todo
     lockScroll?: boolean;
     closeOnClickOverlay?: boolean;
     onClose?: (event: any) => void,

@@ -9,13 +9,18 @@ export default {
                 'pages/price/index',
                 'pages/button/index',
                 'pages/avatar/index',
-                // 'pages/popup/index',
                 'pages/overlay/index'
             ]
         },
         {
             root: 'layout',
             pages: ['pages/layout/index']
+        },
+        {
+            root: 'feedback',
+            pages: [
+                'pages/popup/index'
+            ]
         }
     ],
     window: {

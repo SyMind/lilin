@@ -11,7 +11,6 @@ const Overlay: FC<OverlayProps> = ({
     style: customizeStyle = {},
     visible = false,
     zIndex = 2000,
-    duration = .3,
     lockScroll = true,
     closeOnClickOverlay = true,
     onClose,
@@ -21,10 +20,9 @@ const Overlay: FC<OverlayProps> = ({
     const prefixCls = getPrefixCls('icon', customizePrefixCls);
 
     const style = useMemo(() => ({
-        animationDuration: `${duration}s`,
         zIndex,
         ...customizeStyle
-    }), [customizeStyle, duration, zIndex]);
+    }), [customizeStyle, zIndex]);
 
     const classes = classNames(prefixCls, {
         [`${prefixCls}-open`]: visible

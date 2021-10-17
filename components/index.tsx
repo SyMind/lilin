@@ -13,4 +13,6 @@ export { default as Overlay } from './overlay';
 export { default as Row } from './row';
 export { default as Col } from './col';
 
+export { default as Popup } from './popup';
+
 export { default as ConfigProvider } from './config-provider';

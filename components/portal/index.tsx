@@ -1,10 +1,9 @@
-import { useRef, FC, ReactNode } from 'react';
+import { useRef, FC } from 'react';
 import ReactDOM from 'react-dom';
 import { canUseDom } from '../_util/dom';
-export interface PortalProps {
-    getContainer?: () => HTMLElement;
-    children?: ReactNode;
-}
+import { PortalProps } from './typings';
+
+export { PortalProps } from './typings';
 
 const Portal: FC<PortalProps> = ({
     getContainer = () => null,
