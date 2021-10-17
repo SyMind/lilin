@@ -1,18 +1,9 @@
-import { useMemo, useContext, useCallback, FC, CSSProperties } from 'react';
+import { useMemo, useContext, useCallback, FC } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
+import { OverlayProps } from './typings';
 
-interface OverlayProps {
-    prefixCls?: string;
-    className?: string;
-    style?: CSSProperties;
-    visible?: boolean;
-    zIndex?: number;
-    duration?: number;
-    lockScroll?: boolean;
-    closeOnClickOverlay?: boolean;
-    onClose?: (event: any) => void,
-}
+export { OverlayProps } from './typings';
 
 const Overlay: FC<OverlayProps> = ({
     prefixCls: customizePrefixCls,

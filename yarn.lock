@@ -1144,6 +1144,22 @@
   resolved "https://registry.nlark.com/@types/prop-types/download/@types/prop-types-15.7.4.tgz?cache=0&sync_timestamp=1625678050061&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fprop-types%2Fdownload%2F%40types%2Fprop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha1-/PcgXCXf95Xuea8eMNosl5CAjxE=
 
+"@types/react-dom@^17.0.9":
+  version "17.0.9"
+  resolved "http://registry.npm.baidu-int.com/@types%2freact-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
+  integrity sha1-RBqYHanXvhFwQuGm/T2sSzD1Wt0=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "17.0.30"
+  resolved "http://registry.npm.baidu-int.com/@types%2freact/-/react-17.0.30.tgz#2f8e6f5ab6415c091cc5e571942ee9064b17609e"
+  integrity sha1-L45vWrZBXAkcxeVxlC7pBksXYJ4=
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
 "@types/react@^17.0.15":
   version "17.0.15"
   resolved "https://registry.nlark.com/@types/react/download/@types/react-17.0.15.tgz?cache=0&sync_timestamp=1627124612774&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.15.tgz#c7533dc38025677e312606502df7656a6ea626d0"

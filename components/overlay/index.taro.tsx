@@ -1,19 +1,10 @@
-import { useContext, useCallback, FC, CSSProperties } from 'react';
+import { useContext, useCallback, FC } from 'react';
 import classNames from 'classnames';
 import { View } from '@tarojs/components';
 import { ConfigContext } from '../config-provider';
+import { OverlayProps } from './typings';
 
-interface OverlayProps {
-    prefixCls?: string;
-    className?: string;
-    style?: CSSProperties;
-    visible?: boolean;
-    zIndex?: number;
-    duration?: number; // todo
-    lockScroll?: boolean;
-    closeOnClickOverlay?: boolean;
-    onClose?: (event: any) => void,
-}
+export { OverlayProps } from './typings';
 
 const Overlay: FC<OverlayProps> = ({
     prefixCls: customizePrefixCls,
