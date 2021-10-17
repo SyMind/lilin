@@ -1,14 +1,16 @@
 import { useRef, FC, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { canUseDom } from '../_util/dom';
-
 export interface PortalProps {
-    getContainer: () => HTMLElement;
+    getContainer?: () => HTMLElement;
     children?: ReactNode;
 }
 
-const Portal: FC<PortalProps> = ({getContainer, children}) => {
-    const containerRef = useRef<HTMLElement>();
+const Portal: FC<PortalProps> = ({
+    getContainer = () => null,
+    children
+}) => {
+    const containerRef = useRef<HTMLElement | null>();
 
     const initRef = useRef(false);
     if (!initRef.current && canUseDom()) {
