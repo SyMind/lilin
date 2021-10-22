@@ -6,7 +6,7 @@ const INLINE_ELEMENTS = ['span', 'i', 'abbr', 'select', 'acronym', 'small', 'bdi
 
 module.exports = ({ types: t, template }) => {
     const collection = new Set();
-    const bridgeAbsolutePath = nodePath.resolve(__dirname, '../components/bridge');
+    const bridgeAbsolutePath = nodePath.resolve(__dirname, '../components/_bridge');
 
     return {
         visitor: {
