@@ -1,0 +1,5 @@
+$pixel-ratio: 2 !default;
+
+@function px($value) {
+    @return $value * $pixel-ratio * 1px;
+}

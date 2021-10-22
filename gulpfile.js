@@ -13,6 +13,7 @@ const getBabelCommonConfig = require('./build/getBabelCommonConfig');
 const getWebpackConfig = require('./build/getWebpackConfig');
 const tsConfig = require('./build/getTSCommonConfig')();
 const transformSass = require('./build/transformSass');
+const renderSass = require('./build/renderSass');
 
 const libDir = getProjectPath('lib');
 const esDir = getProjectPath('es');
@@ -69,6 +70,11 @@ function babelify(js, options) {
 function compile(options) {
     const { target, useESModules } = options;
 
+    const fontsDestPath = path.join(useESModules ? esDir : libDir, 'style/fonts');
+    const fonts = gulp
+        .src('components/style/fonts/**/*')
+        .pipe(gulp.dest(fontsDestPath));
+
     const sass = gulp
         .src([
             'components/**/*.sass',
@@ -76,9 +82,14 @@ function compile(options) {
         ])
         .pipe(
             through2.obj(function (file, encoding, next) {
+                if (target === 'taro') {
+                    file = transformSass(file);
+                }
+
                 this.push(file.clone());
+
                 if (file.path.match(/(\/|\\)style(\/|\\)index\.s(a|c)ss$/)) {
-                    transformSass(file.path)
+                    renderSass(file.path)
                         .then(css => {
                             file.contents = Buffer.from(css);
                             file.path = file.path.replace(/\.s(a|c)ss$/, '.css');
@@ -164,7 +175,7 @@ function compile(options) {
 
     const tsFilesStream = babelify(tsResult.js, options);
     const tsd = tsResult.dts.pipe(gulp.dest(useESModules ? esDir : libDir));
-    return merge2([sass, tsFilesStream, tsd]);
+    return merge2([fonts, sass, tsFilesStream, tsd]);
 }
 
 function compileToReactDOMWithES(done) {

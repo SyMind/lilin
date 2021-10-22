@@ -1,6 +1,9 @@
 import {useCallback} from 'react';
 import { View } from '@tarojs/components';
-import { Cell, Avatar } from '../../../../../../es';
+import Cell from '../../../../../../lib/cell';
+import Avatar from  '../../../../../../lib/avatar';
+import '../../../../../../lib/cell/style';
+import '../../../../../../lib/avatar/style';
 import './index.scss';
 
 const AvatarPage = () => {
