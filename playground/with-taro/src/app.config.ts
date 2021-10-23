@@ -21,6 +21,12 @@ export default {
             pages: [
                 'pages/popup/index'
             ]
+        },
+        {
+            root: 'dentry',
+            pages: [
+                'pages/inputNumber/index'
+            ]
         }
     ],
     window: {

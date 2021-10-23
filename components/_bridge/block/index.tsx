@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { forwardRef, ForwardRefRenderFunction } from 'react';
 import { View } from '@tarojs/components';
 
-const BridgeBlock: FC = props => {
-    return <View {...props} />;
+const BridgeBlock: ForwardRefRenderFunction<any, any> = (props, ref) => {
+    return <View ref={ref} {...props} />;
 };
 
-export default BridgeBlock;
+export default forwardRef(BridgeBlock);

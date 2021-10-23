@@ -50,28 +50,32 @@ module.exports = ({ types: t, template }) => {
                     return;
                 }
 
+                function collect(componentName) {
+                    args[0] = t.identifier(componentName);
+                    collection.add(componentName);
+                }
+
                 const [typeArgument] = args;
                 if (typeArgument.type === 'StringLiteral') {
                     if (INLINE_ELEMENTS.includes(typeArgument.value)) {
-                        args[0] = t.identifier('BridgeInline');
-                        collection.add('BridgeInline');
+                        collect('BridgeInline');
                         return;
                     }
 
-                    if (typeArgument.value === 'button') {
-                        args[0] = t.identifier('BridgeButton');
-                        collection.add('BridgeButton');
-                        return;
+                    switch (typeArgument.value) {
+                    case 'button':
+                        collect('BridgeButton');
+                        break;
+                    case 'img':
+                        collect('BridgeImg');
+                        break;
+                    case 'input':
+                        collect('BridgeInput');
+                        break;
+                    default:
+                        collect('BridgeBlock');
+                        break;
                     }
-
-                    if (typeArgument.value === 'img') {
-                        args[0] = t.identifier('BridgeImg');
-                        collection.add('BridgeImg');
-                        return;
-                    }
-
-                    args[0] = t.identifier('BridgeBlock');
-                    collection.add('BridgeBlock');
                 }
             }
         }

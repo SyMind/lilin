@@ -15,4 +15,6 @@ export { default as Col } from './col';
 
 export { default as Popup } from './popup';
 
+export { default as InputNumber } from './input-number';
+
 export { default as ConfigProvider } from './config-provider';

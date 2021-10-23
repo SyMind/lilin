@@ -1,0 +1,48 @@
+@import '../../style/themes.scss';
+
+$input-number-prefix-cls: #{$lilin-prefix}-input-number;
+
+.#{$input-number-prefix-cls} {
+    display: flex;
+    align-items: center;
+
+    &--disabled {
+        input {
+            color: $input-number-icon-void-color;
+        }
+    }
+
+    &--icon {
+        color: $input-number-icon-color;
+        font-size: $input-number-icon-size;
+        cursor: pointer;
+        &--disabled {
+            color: $input-number-icon-void-color;
+            cursor: not-allowed;
+        }
+    }
+
+    &--input {
+        width: $input-number-input-width;
+        height: 100%;
+        text-align: center;
+        outline: none;
+        border: 0;
+        margin: 0 6px;
+        background-color: $input-number-input-background-color;
+        border-radius: $input-number-input-border-radius;
+
+        // 兼容 taro3 编译为 h5 时的结构
+        input {
+            width: $input-number-input-width;
+            height: 100%;
+            outline: none;
+            border: 0;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                appearance: none;
+            }
+        }
+    }
+}

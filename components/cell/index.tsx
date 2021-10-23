@@ -2,7 +2,7 @@ import { useMemo, useContext, useCallback, FC, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import Icon from '../icon';
-import {isNumeric} from '../_util/strings';
+import {isNumeric} from '../_util/literal';
 import Group from './cell-group';
 
 interface CellProps {
