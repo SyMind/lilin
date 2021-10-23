@@ -1,3 +1,5 @@
+export { default as ConfigProvider } from './config-provider';
+
 export { default as Button } from './button';
 
 export { default as Icon } from './icon';
@@ -19,4 +21,4 @@ export { default as Swipe } from './swipe';
 
 export { default as InputNumber } from './input-number';
 
-export { default as ConfigProvider } from './config-provider';
+export { default as ActionSheet } from './action-sheet';

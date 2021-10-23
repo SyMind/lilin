@@ -9,7 +9,7 @@ type PositionType = 'top' | 'bottom' | 'left' | 'right' | 'center';
 
 type CloseIconPositionType = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-interface PopupProps extends OverlayProps {
+export interface PopupProps extends OverlayProps {
     prefixCls?: string;
     position?: PositionType;
     transition?: string;

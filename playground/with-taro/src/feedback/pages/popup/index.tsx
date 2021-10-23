@@ -49,7 +49,7 @@ const PopupPage = () => {
                 onClick={handleBasicClick}
             />
             <Popup
-                bodyClass="popclass"
+                bodyClassName="popclass"
                 style={{ padding: '30px 50px' }}
                 visible={basicVisible}
                 zIndex={100}
