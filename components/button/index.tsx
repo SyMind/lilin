@@ -51,31 +51,28 @@ const Button: FC<ButtonProps> = ({
     const prefixCls = getPrefixCls('btn', customizePrefixCls);
 
     const style = useMemo(() => {
-        if (!color) {
-            return undefined;
-        }
-
-        const style: CSSProperties = {};
+        const result: CSSProperties = {};
         if (plain) {
-            style.color = color;
-            style.background = '#fff';
-            if (!color.includes('gradient')) {
-                style.borderColor = color;
+            result.color = color;
+            result.background = '#fff';
+            if (!color?.includes('gradient')) {
+                result.borderColor = color;
             }
         } else {
-            style.color = '#fff';
-            style.background = color;
+            result.color = '#fff';
+            result.background = color;
         }
 
         if (customStyle) {
             return {
-                ...style,
+                ...result,
                 ...customStyle
             };
         }
 
-        return style;
+        return result;
     }, [color, customStyle, plain]);
+    console.log('style', style);
 
     const classes = classNames(
         prefixCls,
