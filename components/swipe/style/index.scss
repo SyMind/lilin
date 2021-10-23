@@ -1,0 +1,26 @@
+@import '../../style/themes.scss';
+
+$swipe-prefix-cls: #{$lilin-prefix}-swipe;
+
+.#{$swipe-prefix-cls} {
+    position: relative;
+    display: block;
+    transition: all 0.3s linear;
+    &--left,
+    &--right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+    }
+    &--left {
+        left: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    &--right {
+        right: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    &--content {
+        display: inherit;
+    }
+}

@@ -19,7 +19,8 @@ export default {
         {
             root: 'feedback',
             pages: [
-                'pages/popup/index'
+                'pages/popup/index',
+                'pages/swipe/index'
             ]
         },
         {
