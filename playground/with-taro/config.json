@@ -221,7 +221,7 @@
                 },
                 {
                     "version": "3.0.0",
-                    "name": "action-sheet",
+                    "name": "ActionSheet",
                     "taro": true,
                     "sort": "1",
                     "cName": "动作面板",

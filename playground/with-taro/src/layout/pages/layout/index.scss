@@ -1,24 +1,24 @@
 .box-item {
     background: #fff;
-    margin-bottom: 20px;
-    padding: 20px 0;
+    margin-bottom: 40px;
+    padding: 40px 0;
 }
 .demo .nut-row {
     overflow: hidden;
     &:not(:last-child) .nut-col {
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 }
 .flex-content {
-    line-height: 40px;
+    line-height: 80px;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 12px;
     background: #ff8881;
     &.flex-content-light {
         background: #ffc7c4;
     }
     &.flex-content-height {
-        height: 50px;
+        height: 100px;
     }
 }

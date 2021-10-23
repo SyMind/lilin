@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { View } from '@tarojs/components';
 import Cell from '../../../../../../lib/cell';
 import ActionSheet from  '../../../../../../lib/action-sheet';
+import '../../../../../../lib/cell/style';
 import '../../../../../../lib/action-sheet/style';
+import './index.scss';
 
 const { Option } = ActionSheet;
 
