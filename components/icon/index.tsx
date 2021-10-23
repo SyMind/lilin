@@ -1,13 +1,12 @@
-import { useContext, FC } from 'react';
+import { useMemo, useContext, FC } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
-import { isURI } from '../_util/strings';
 
 interface IconProps {
     prefixCls?: string;
     className?: string;
     name: string;
-    size?: string | number;
+    size?: number;
     fontClassName?: string;
     color?: string;
     onClick?: () => void;
@@ -17,14 +16,24 @@ const Icon: FC<IconProps> = ({
     prefixCls: customizePrefixCls,
     className,
     name,
-    size,
+    size: rawSize,
     color,
     onClick
 }) => {
     const { getPrefixCls } = useContext(ConfigContext);
     const prefixCls = getPrefixCls('icon', customizePrefixCls);
 
-    if (isURI(name)) {
+    const style = useMemo(() => {
+        const size = typeof rawSize === 'number' ? `${rawSize}px` : undefined;
+        return {
+            color,
+            fontSize: size,
+            width: size,
+            height: size
+        };
+    }, [color, rawSize]);
+
+    if (name.includes('/')) {
         return (
             <img
                 className={classNames(
@@ -33,12 +42,7 @@ const Icon: FC<IconProps> = ({
                     prefixCls,
                     className
                 )}
-                style={{
-                    color,
-                    fontSize: size,
-                    width: size,
-                    height: size
-                }}
+                style={style}
                 src={name}
                 onClick={onClick}
             />
@@ -53,12 +57,7 @@ const Icon: FC<IconProps> = ({
                 prefixCls,
                 className
             )}
-            style={{
-                color,
-                fontSize: size,
-                width: size,
-                height: size
-            }}
+            style={style}
             onClick={onClick}
         />
     );
