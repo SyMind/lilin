@@ -43,6 +43,7 @@ const Popup: FC<PopupProps> = ({
     round = false,
     zIndex = 2000,
     lockScroll = true,
+    closeOnClickOverlay,
     onClose,
     children
 }) => {
@@ -50,23 +51,23 @@ const Popup: FC<PopupProps> = ({
     const prefixCls = getPrefixCls('popup', customizePrefixCls);
 
     const bodyStyle = useMemo(() => ({
-        display: visible ? 'block' : 'none',
         zIndex,
         ...customizeBodyStyle
-    }), [visible, zIndex, customizeBodyStyle]);
+    }), [zIndex, customizeBodyStyle]);
 
     const bodyClasses = classNames(
         prefixCls,
-        `${prefixCls}--${position}`,
+        `${prefixCls}-${position}`,
         {
-            [`${prefixCls}--round`]: round
+            [`${prefixCls}-round`]: round,
+            [`${prefixCls}-${position}-open`]: visible
         },
         bodyClassName
     );
 
     const closeIconClasses = classNames(
-        `${prefixCls}--close-icon`,
-        `${prefixCls}--close-icon-${closeIconPosition}`
+        `${prefixCls}-close-icon`,
+        `${prefixCls}-close-icon-${closeIconPosition}`
     );
 
     const handleClose = useCallback(event => {
@@ -78,7 +79,7 @@ const Popup: FC<PopupProps> = ({
             {overlay && (
                 <Overlay
                     visible={visible}
-                    close-on-click-overlay="closeOnClickOverlay"
+                    closeOnClickOverlay={closeOnClickOverlay}
                     className={overlayClassName}
                     style={overlayStyle}
                     zIndex={zIndex}
@@ -86,26 +87,20 @@ const Popup: FC<PopupProps> = ({
                     onClose={handleClose}
                 />
             )}
-            {
-                visible || !destroyOnClose
-                    ? (
-                        <div
-                            className={bodyClasses}
-                            style={bodyStyle}
-                        >
-                            {children}
-                            {closeable && (
-                                <div
-                                    className={closeIconClasses}
-                                    onClick={handleClose}
-                                >
-                                    <Icon name={closeIcon} size={12} />
-                                </div>
-                            )}
-                        </div>
-                    )
-                    : null
-            }
+            <div
+                className={bodyClasses}
+                style={bodyStyle}
+            >
+                {visible || !destroyOnClose ? children : null}
+                {closeable && (
+                    <div
+                        className={closeIconClasses}
+                        onClick={handleClose}
+                    >
+                        <Icon name={closeIcon} size={12} />
+                    </div>
+                )}
+            </div>
         </Portal>
     );
 };

@@ -10,14 +10,14 @@ $overlay-prefix-cls: #{$lilin-prefix}-overlay;
     height: 0;
     opacity: 0;
     background-color: $overlay-bg-color;
-    transition: opacity 0.5s linear, height 0s ease 0.5s;
+    transition: opacity .3s linear, height 0s ease .3s;
     pointer-events: none;
 
     &-open {
         height: 100%;
         opacity: 1;
         transition: none;
-        animation: lilinOverlayFadeIn 0.5s linear;
+        animation: lilinOverlayFadeIn .3s linear;
         pointer-events: auto;
     }
 }

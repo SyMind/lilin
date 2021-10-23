@@ -44,13 +44,12 @@ const PopupPage = () => {
         <View className='demo'>
             <View className='h2'>基础用法</View>
             <Cell
-                title="展示弹出层"
+                title='展示弹出层'
                 is-link
                 onClick={handleBasicClick}
             />
             <Popup
-                bodyClassName="popclass"
-                style={{ padding: '30px 50px' }}
+                bodyStyle={{ padding: '30px 50px' }}
                 visible={basicVisible}
                 zIndex={100}
                 onClose={handleBasicClose}
@@ -58,92 +57,92 @@ const PopupPage = () => {
                 正文
             </Popup>
             <View className='h2'>弹出位置</View>
-            <Cell title="顶部弹出" onClick={handleTopClick} />
+            <Cell title='顶部弹出' onClick={handleTopClick} />
             <Popup
-                position="top"
-                style={{ height: '20%' }}
+                position='top'
+                bodyStyle={{ height: '20%' }}
                 visible={topVisbile}
                 onClose={handleTopClose}
             />
             <Cell
-                title="底部弹出"
+                title='底部弹出'
                 onClick={handleBottomClick}
             />
             <Popup
                 position='bottom'
-                style={{ height: '20%' }}
+                bodyStyle={{ height: '20%' }}
                 visible={bottomVisbile}
                 onClose={handleBottomClose}
             />
             <Cell
-                title="左侧弹出"
+                title='左侧弹出'
                 onClick={handleLeftClick}
             />
             <Popup
                 position='left'
-                style={{ width: '20%', height: '100%' }}
+                bodyStyle={{ width: '20%', height: '100%' }}
                 visible={leftVisbile}
                 onClose={handleLeftClose}
             />
             {/* <nut-cell
-            title="右侧弹出"
+            title='右侧弹出'
             is-link
-            @click="state.showRight = true"
+            @click='state.showRight = true'
             ></nut-cell>
             <Popup
-            position="right"
-            :style="{ width: '20%', height: '100%' }"
-            v-model:visible="state.showRight"
+            position='right'
+            :style='{ width: '20%', height: '100%' }'
+            v-model:visible='state.showRight'
             ></Popup>
             <h2>关闭图标</h2>
             <nut-cell
-            title="关闭图标"
+            title='关闭图标'
             is-link
-            @click="state.showIcon = true"
+            @click='state.showIcon = true'
             ></nut-cell>
             <Popup
-            position="bottom"
+            position='bottom'
             closeable
-            :style="{ height: '20%' }"
-            v-model:visible="state.showIcon"
+            :style='{ height: '20%' }'
+            v-model:visible='state.showIcon'
             ></Popup>
             <nut-cell
-            title="图标位置"
+            title='图标位置'
             is-link
-            @click="state.showIconPosition = true"
+            @click='state.showIconPosition = true'
             ></nut-cell>
             <Popup
-            position="bottom"
+            position='bottom'
             closeable
-            close-icon-position="top-left"
-            :style="{ height: '20%' }"
-            v-model:visible="state.showIconPosition"
+            close-icon-position='top-left'
+            :style='{ height: '20%' }'
+            v-model:visible='state.showIconPosition'
             ></Popup>
             <nut-cell
-            title="自定义图标"
+            title='自定义图标'
             is-link
-            @click="state.showCloseIcon = true"
+            @click='state.showCloseIcon = true'
             ></nut-cell>
             <Popup
-            position="bottom"
+            position='bottom'
             closeable
-            close-icon-position="top-left"
-            close-icon="heart"
-            :style="{ height: '20%' }"
-            v-model:visible="state.showCloseIcon"
+            close-icon-position='top-left'
+            close-icon='heart'
+            :style='{ height: '20%' }'
+            v-model:visible='state.showCloseIcon'
             ></Popup>
             <h2>圆角弹框</h2>
             <nut-cell
-            title="圆角弹框"
+            title='圆角弹框'
             is-link
-            @click="state.showRound = true"
+            @click='state.showRound = true'
             ></nut-cell>
             <Popup
-                position="bottom"
+                position='bottom'
                 closeable
                 round
-                :style="{ height: '30%' }"
-                v-model:visible="state.showRound"
+                :style='{ height: '30%' }'
+                v-model:visible='state.showRound'
             /> */}
         </View>
     );
