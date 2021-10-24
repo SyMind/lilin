@@ -7,7 +7,7 @@ const checkPoint = (price: string | number) => String(price).indexOf('.') > 0;
 interface PriceProps {
     prefixCls?: string;
     className?: string;
-    price?: string | string;
+    price?: string | number;
     needSymbol?: boolean;
     symbol?: string;
     decimalDigits?: number;

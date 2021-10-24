@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { View } from '@tarojs/components';
-import { Cell } from '../../../../../../es';
+import Cell from  '../../../../../../lib/cell';
+import '../../../../../../lib/cell/style';
 
 const CellPage = () => {
     const testClick = useCallback(() => {

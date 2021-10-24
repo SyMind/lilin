@@ -1,5 +1,6 @@
 import { View } from '@tarojs/components';
-import { Icon } from '../../../../../../es';
+import Icon from  '../../../../../../lib/icon';
+import '../../../../../../lib/icon/style';
 
 const IconPage = () => (
     <View className='index'>

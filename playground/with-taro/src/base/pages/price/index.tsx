@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react';
 import { View } from '@tarojs/components';
-import { Cell, Price } from '../../../../../../es';
+import Price from  '../../../../../../lib/price';
+import Cell from  '../../../../../../lib/cell';
+import '../../../../../../lib/price/style';
+import '../../../../../../lib/cell/style';
 
 const PricePage = () => {
     const [price, setPrice] = useState(0);

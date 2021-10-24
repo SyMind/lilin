@@ -1,5 +1,8 @@
 import { View } from '@tarojs/components';
-import { Row, Col } from '../../../../../../es';
+import Row from '../../../../../../lib/cell';
+import Col from  '../../../../../../lib/col';
+import '../../../../../../lib/row/style';
+import '../../../../../../lib/col/style';
 import './index.scss';
 
 const LayoutPage = () => (

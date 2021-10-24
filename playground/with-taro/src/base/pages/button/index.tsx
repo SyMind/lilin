@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { View } from '@tarojs/components';
-import { Button } from '../../../../../../es';
+import Button from  '../../../../../../lib/button';
+import '../../../../../../lib/button/style';
 import './index.scss';
 
 const ButtonPage = () => {

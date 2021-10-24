@@ -1,6 +1,9 @@
 import { useState, useCallback } from 'react';
 import { View } from '@tarojs/components';
-import { Cell, Popup } from '../../../../../../es';
+import Cell from '../../../../../../lib/cell';
+import Popup from  '../../../../../../lib/popup';
+import '../../../../../../lib/cell/style';
+import '../../../../../../lib/popup/style';
 
 const PopupPage = () => {
     const [basicVisible, setBasicVisible] = useState(false);

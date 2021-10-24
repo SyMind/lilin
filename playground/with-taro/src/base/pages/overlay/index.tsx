@@ -1,6 +1,11 @@
 import {useState} from 'react';
 import { View } from '@tarojs/components';
-import { Cell, Button, Overlay } from '../../../../../../es';
+import Overlay from  '../../../../../../lib/overlay';
+import Cell from  '../../../../../../lib/cell';
+import Button from  '../../../../../../lib/button';
+import '../../../../../../lib/overlay/style';
+import '../../../../../../lib/cell/style';
+import '../../../../../../lib/button/style';
 import './index.scss';
 
 const OverlayPage = () => {
