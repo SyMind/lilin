@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import Popup, { PopupProps } from '../popup';
 import { convertChildrenToData } from './util';
+import Option from './option';
 import { Key } from './typings';
 
 interface ActionSheetProps extends PopupProps {
@@ -11,10 +12,10 @@ interface ActionSheetProps extends PopupProps {
     title?: string;
     description?: string;
     cancelText?: string;
-    value?: string;
+    selectedKey?: Key;
     selectedColor?: string;
-    onChange?: (value?: Key) => void;
-    onSelect?: (value: Key) => void,
+    onChange?: (key?: Key) => void;
+    onSelect?: (key: Key) => void,
     onCancel?: () => void;
 }
 
@@ -25,7 +26,7 @@ const InternalActionSheet: FC<ActionSheetProps> = ({
     visible = false,
     title,
     description,
-    value,
+    selectedKey,
     selectedColor,
     onChange,
     onSelect,
@@ -56,18 +57,18 @@ const InternalActionSheet: FC<ActionSheetProps> = ({
                     <div className={`${prefixCls}-menu`}>
                         {options.map(option => (
                             <div
-                                key={option.value}
+                                key={option.key}
                                 className={classNames(`${prefixCls}-menu-item`, {
                                     [`${prefixCls}-menu-item-disabled`]: option.disabled
                                 })}
                                 style={{
-                                    color: value !== undefined && value === option.value
+                                    color: selectedKey !== undefined && selectedKey === option.key
                                         ? selectedColor
                                         : undefined
                                 }}
                                 onClick={() => {
-                                    onSelect?.(option.value);
-                                    onChange?.(option.value);
+                                    onSelect?.(option.key);
+                                    onChange?.(option.key);
                                 }}
                             >
                                 {option.label}
@@ -82,7 +83,7 @@ const InternalActionSheet: FC<ActionSheetProps> = ({
                 )}
                 {!!cancelText && (
                     <div
-                        className={`${prefixCls}-menu-item-cancel`}
+                        className={`${prefixCls}-cancel`}
                         onClick={handleClose}
                     >
                         {cancelText}
