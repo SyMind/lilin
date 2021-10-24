@@ -21,7 +21,8 @@ export default {
             pages: [
                 'pages/popup/index',
                 'pages/swipe/index',
-                'pages/actionsheet/index'
+                'pages/actionsheet/index',
+                'pages/backtop/index'
             ]
         },
         {

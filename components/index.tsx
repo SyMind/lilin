@@ -22,3 +22,5 @@ export { default as Swipe } from './swipe';
 export { default as InputNumber } from './input-number';
 
 export { default as ActionSheet } from './action-sheet';
+
+export { default as BackTop } from './back-top';

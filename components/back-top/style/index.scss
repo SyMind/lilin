@@ -1,0 +1,30 @@
+@import '../../style/themes.scss';
+
+$backtop-prefix-cls: #{$lilin-prefix}-back-top;
+
+.#{$backtop-prefix-cls} {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 10;
+
+    &.#{$backtop-prefix-cls}-show {
+        width: 40px;
+        height: 40px;
+        background: $white;
+        border: 1px solid $backtop-border-color;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:active {
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .#{$iconfont-css-prefix} {
+        transition: all 0.2s ease-in-out;
+    }
+}

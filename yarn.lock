@@ -4853,10 +4853,10 @@ sass-loader@^12.1.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.36.0:
-  version "1.43.3"
-  resolved "https://registry.npmmirror.com/sass/download/sass-1.43.3.tgz?cache=0&sync_timestamp=1634867125986&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fsass%2Fdownload%2Fsass-1.43.3.tgz#aa16a69131b84f0cd23189a242571e8905f1ce43"
-  integrity sha1-qhamkTG4TwzSMYmiQlceiQXxzkM=
+sass@1.32.11:
+  version "1.32.11"
+  resolved "https://registry.npmmirror.com/sass/download/sass-1.32.11.tgz?cache=0&sync_timestamp=1634867125986&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fsass%2Fdownload%2Fsass-1.32.11.tgz#b236b3ea55c76602c2ef2bd0445f0db581baa218"
+  integrity sha1-sjaz6lXHZgLC7yvQRF8NtYG6ohg=
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
