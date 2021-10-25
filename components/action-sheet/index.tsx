@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import Popup, { PopupProps } from '../popup';
 import { convertChildrenToData } from './util';
-import Option from './option';
+import Option from './action-sheet-option';
 import { Key } from './typings';
 
 interface ActionSheetProps extends PopupProps {

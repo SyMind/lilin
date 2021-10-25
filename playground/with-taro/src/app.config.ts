@@ -22,7 +22,8 @@ export default {
                 'pages/popup/index',
                 'pages/swipe/index',
                 'pages/actionsheet/index',
-                'pages/backtop/index'
+                'pages/backtop/index',
+                'pages/collapse/index'
             ]
         },
         {

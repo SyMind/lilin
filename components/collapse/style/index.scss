@@ -1,0 +1,112 @@
+@import '../../style/themes.scss';
+
+$collapse-prefix-cls: #{$lilin-prefix}-collapse;
+
+.#{$collapse-prefix-cls} {
+    &-item {
+        position: relative;
+    }
+
+    .collapse-item {
+        &::after {
+            position: absolute;
+            box-sizing: border-box;
+            content: ' ';
+            pointer-events: none;
+            right: 16px;
+            bottom: 0;
+            left: 16px;
+            border-bottom: 1px solid #ebedf0;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+        .collapse-title-value {
+            display: inline-block;
+            .collapse-title-icon {
+                top: 2px;
+            }
+        }
+    }
+    .collapse-item {
+        position: relative;
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding: 13px 26px;
+        color: #666666;
+        font-size: 14px;
+        line-height: 24px;
+        background-color: #fff;
+        box-sizing: border-box;
+        .collapse-icon {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transition: transform 0.3s;
+        }
+        .col-expanded {
+            transform: rotate(-180deg);
+        }
+        .subTitle {
+            position: absolute;
+            top: 50%;
+            right: 60px;
+            margin-top: -12px;
+            color: #999999;
+        }
+        .titleIconRight {
+            vertical-align: middle;
+            margin: 0px 0 0 10px;
+        }
+        .titleIconLeft {
+            vertical-align: middle;
+            margin: 0px 10px 0 0;
+        }
+    }
+    .collapse-wrapper {
+        display: block;
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+        .collapse-content {
+            display: block;
+            padding: 12px 26px;
+            color: #666666;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #fff;
+        }
+    }
+    .open-style {
+        will-change: height;
+        height: auto;
+    }
+    .close-style {
+        will-change: auto;
+    }
+    .nut-collapse-item-disabled {
+        color: #c8c9cc;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    .titleIconLeft {
+        float: left;
+        .collapse-item {
+            padding: 10px 16px 10px 50px;
+            .collapse-icon {
+                left: 20px;
+            }
+            .subTitle {
+                right: 16px;
+            }
+        }
+    }
+    .titleIconRight {
+        float: right;
+    }
+    .collapse-icon-title {
+        display: inline-block;
+    }
+}

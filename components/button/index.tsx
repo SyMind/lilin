@@ -72,7 +72,6 @@ const Button: FC<ButtonProps> = ({
 
         return result;
     }, [color, customStyle, plain]);
-    console.log('style', style);
 
     const classes = classNames(
         prefixCls,
